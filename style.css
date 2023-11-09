@@ -1,0 +1,43 @@
+body {
+    background-color: #282a36;
+    color: white;
+}
+
+.head {
+    padding: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    font-size: 78px;
+    padding: 10px;
+}
+
+.main {
+    border-radius: 15px;
+    height: fit-content;
+    width: 70%;
+    background: #8f8f8f4d;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+a {
+    text-decoration: none;
+    color: wheat;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
