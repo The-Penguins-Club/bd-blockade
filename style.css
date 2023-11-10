@@ -41,3 +41,18 @@ h2 {
     left: 50%;
     transform: translateX(-50%);
 }
+
+@media screen and (max-width: 600px) {
+    .main {
+        width: 90%;
+    }
+
+    .logo {
+        font-size: 48px;
+    }
+
+    .footer {
+        left: 0;
+        transform: none;
+    }
+}

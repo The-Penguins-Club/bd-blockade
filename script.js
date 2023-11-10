@@ -1,3 +1,10 @@
+const vred = document.getElementsByClassName('vredict')[0];
+const subTitle = document.getElementById('subtitle');
+const caller = document.getElementById('caller');
+const reporter = document.getElementById('reporter');
+const sourceLink = document.getElementById('sourceLink');
+
+
 const API_URL =
   "https://api.github.com/repos/The-Penguins-Club/bd-blockade/issues?state=open&labels=approved";
 
@@ -5,45 +12,36 @@ fetch(API_URL)
   .then((resp) => resp.json())
   .then((resp) => {
     if (resp.length <= 0) {
-      let header = document.createElement("h1");
-      header.classList.add("is-size-2");
-      header.innerText = "No Hartal Bro.";
-      let nohartal = document.querySelector(".nohartal");
-      nohartal.appendChild(header);
-      console.log("No Hartal Bro.");
+      vred.innerText = "No";
     } else {
       let fromdate = resp[0].title.split("|")[0].trim().split("-");
-      fromdate = new Date(
-        `${fromdate[2]}-${fromdate[1]}-${fromdate[0]}`
-      ).toDateString();
+      fromdate = new Date(`${fromdate[2]}-${fromdate[1]}-${fromdate[0]}`).toDateString();
       let todate = resp[0].title.split("|")[1].trim().split("-");
-      todate = new Date(
-        `${todate[2]}-${todate[1]}-${todate[0]}`
-      ).toDateString();
+      todate = new Date(`${todate[2]}-${todate[1]}-${todate[0]}`).toDateString();
 
-      title = `Hartal From ${fromdate} to ${todate}`;
+      vred.innerText = 'Yes';
+      title = `🗓️ It seems Hartal From ${fromdate} to ${todate}`;
       console.log(title);
-      let header = document.createElement("h1");
-      header.classList.add("is-size-2");
-      header.innerText = title;
-      let hartal = document.querySelector(".hartal");
+      subTitle.innerText = title;
+
 
       let regex = /(https:\/\/[^\s]+)/;
       source = resp[0].body.match(regex)[0];
       console.log(source);
+      sourceLink.href = resp[0].body.match(regex)[0];
 
-      hartal.appendChild(header);
-      let passage = document.createElement("p");
-      passage.classList.add("is-size-6");
+      const searchString = "Called By: ";
+      if (resp[0].body.toLowerCase().includes(searchString.toLowerCase())) {
+        let calledByText = resp[0].body.split(new RegExp(searchString, 'i'))[1]?.split('\n')[0]?.trim();
+        caller.innerHTML = `<h3 >📢 Called By: ${calledByText}</h3>`;
+      }
 
-      passage.innerHTML = resp[0].body.replace(source, "");
-      hartal.appendChild(passage);
+      const setReporter = resp[0].user.login;
+      reporter.innerHTML = `<h4>Reported By: ${setReporter}</h4>`;
 
-      let sourcehtml = document.createElement("a");
-      sourcehtml.setAttribute("href", source);
-      sourcehtml.innerText = "Source";
-      hartal.appendChild(sourcehtml);
+
     }
-
-    // console.log(resp);
+  })
+  .catch((error) => {
+    console.error('Error fetching data:', error);
   });
