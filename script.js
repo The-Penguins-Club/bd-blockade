@@ -12,6 +12,9 @@ fetch(API_URL)
   .then((resp) => {
     if (resp.length <= 0) {
       vred.innerText = "No";
+      subTitle.innerText = "No Blockade around; But stay Safe";
+      caller.innerText = "NoBody";
+      
       [subTitle, caller, reporter, sourceLink.parentElement].forEach(
         (element) => {
           element.style.display = "none";
