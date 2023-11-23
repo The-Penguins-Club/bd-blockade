@@ -12,7 +12,7 @@ fetch(API_URL)
   .then((resp) => {
     if (resp.length <= 0) {
       vred.innerText = "No";
-      subTitle.innerText = "No Blockade around; But stay Safe";
+      subTitle.innerText = "No blockade is around; But stay alert";
       caller.innerText = "NoBody";
       
       [subTitle, caller, reporter, sourceLink.parentElement].forEach(
@@ -31,7 +31,7 @@ fetch(API_URL)
       ).toDateString();
 
       vred.innerText = "Yes";
-      title = `🗓️ It seems Hartal From ${fromdate} to ${todate}`;
+      title = `🗓️ It seems there is a call for hartal from ${fromdate} to ${todate}`;
       console.log(title);
       subTitle.innerText = title;
 
@@ -50,7 +50,7 @@ fetch(API_URL)
       }
 
       const setReporter = resp[0].user.login;
-      reporter.innerHTML = `<h4>Reported By: ${setReporter}</h4>`;
+      reporter.innerHTML = `<h4>🦆 Reported By: ${setReporter}</h4>`;
     }
   })
   .catch((error) => {
