@@ -2,7 +2,6 @@ body {
     font-family: 'Noto Sans';
     background-color: #282a36;
     color: white;
-    margin: auto 24px auto 24px;
 }
 
 .head {
@@ -21,6 +20,7 @@ body {
     height: fit-content;
     width: 70%;
     background: #8f8f8f4d;
+    margin: auto 18px auto 18px;
     padding: 20px;
     position: absolute;
     top: 50%;
@@ -42,6 +42,7 @@ h2 {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    margin: auto 24px auto 24px;
 }
 
 @media screen and (max-width: 600px) {
