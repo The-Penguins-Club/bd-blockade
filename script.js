@@ -14,7 +14,7 @@ fetch(API_URL)
       vred.innerText = "No";
       subTitle.innerText = "No blockade is around; But stay alert";
       caller.innerText = "NoBody";
-      
+
       [subTitle, caller, reporter, sourceLink.parentElement].forEach(
         (element) => {
           element.style.display = "none";
@@ -32,6 +32,9 @@ fetch(API_URL)
 
       vred.innerText = "Yes";
       title = `🗓️ It seems there is a call for hartal from ${fromdate} to ${todate}`;
+      if (fromdate == todate) {
+        title = `🗓️ It seems there is a call for a hartal on ${fromdate}`;
+      }
       console.log(title);
       subTitle.innerText = title;
 
